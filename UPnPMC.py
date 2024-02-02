@@ -64,7 +64,7 @@ if __name__ == '__main__':
 		print("Arguments:")
 		print("\taction: -o open ports, -c close ports")
 		print("\tports: port1,port2,port3")
-		print("\tprotocols: TCP, UDP, or TCP,UDP")
+		print("\tprotocols: -p [TCP, UDP, or TCP,UDP], default is both TCP and UDP if -p is not specified")
 		print("\t-h help")
 		exit()
 	#check if action is specified
