@@ -48,7 +48,7 @@ if __name__ == '__main__':
 	arguments = len(sys.argv) - 1
 	if arguments < 1:
 		print("Error: Wrong number of arguments, use -h for help")
-		exit()
+		sys.exit(0)
 	# Arguments specification
 	# 1: type of action to perform (open or close) -c or -o
 	# 2: ports to open in the format of port1,port2,port3
