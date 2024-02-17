@@ -66,7 +66,7 @@ if __name__ == '__main__':
 		print("\tports: port1,port2,port3")
 		print("\tprotocols: -p [TCP, UDP, or TCP,UDP], default is both TCP and UDP if -p is not specified")
 		print("\t-h help")
-		exit()
+		sys.exit(0)
 	#check if action is specified
 	if '-o' in args:
 		action = 'open'
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 		action = 'close'
 	else:
 		print("Error: No action specified")
-		exit()
+		sys.exit(0)
 	actionShortcut = '-o' if action == 'open' else '-c'
 	#check if ports are specified by checking if there are numbers in the first argument after -o or -c
 	if any(char.isdigit() for char in args[args.index(actionShortcut) + 1]):
@@ -83,21 +83,21 @@ if __name__ == '__main__':
 		for port in ports:
 			if not port.isdigit():
 				print("Error: Invalid port number")
-				exit()
+				sys.exit(0)
 	else:
 		print("Error: No ports specified")
-		exit()
+		sys.exit(0)
 	#check if protocols are specified
 	if '-p' in args:
 		protocols = args[args.index('-p') + 1].split(',')
 		#check if protocols are valid and uppercase
 		if len(protocols) > 2:
 			print("Error: Too many protocols specified")
-			exit()
+			sys.exit(0)
 		for protocol in protocols:
 			if protocol.upper() != 'TCP' and protocol.upper() != 'UDP':
 				print("Error: Invalid protocol")
-				exit()
+				sys.exit(0)
 		#set protocols to uppercase
 		protocols = [protocol.upper() for protocol in protocols]
 	else:
@@ -125,27 +125,5 @@ if __name__ == '__main__':
 	
 	print()
 	#close app
-	exit()
-
-
-
-		# device.discoverdelay = 200
-		# try:
-		# 	print("Discovering UPnP devices...")
-		# 	devices = device.discover()
-		# 	print(devices, 'device(s) detected')
-		# 	#open for all devices
-		# 	for i in range(devices):
-		# 		device.selectigd()
-		# 		# display information about the IGD and the internet connection
-		# 		print('local ip address :', device.lanaddr)
-		# 		open_port(device, port, 'TCP')
-		# 		open_port(device, port, 'UDP')
-		# 		#if the user wants to keep the port open enters third argument of 1, check if argument exists
-		# 	if len(sys.argv) > 2 and sys.argv[2] == '1':
-		# 		print("Press CTRL + C to exit")
-		# 		while True:
-		# 			pass
-		# except Exception as e:
-		# 	print(e)
+	sys.exit(0)
 
